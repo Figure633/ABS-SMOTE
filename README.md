@@ -25,6 +25,12 @@ ABS-SMOTE 在标准 SMOTE 的基础上进行了改进，其核心思想如下：
 
 ---
 
+ABS-SMOTE/
+├── sampling/
+│ └── abs_smote.py ABS-SMOTE 算法核心实现
+├── requirements.txt 运行所需依赖库
+└── README.md 英文说明文档
+
 # Adaptive Boundary-Shift SMOTE (ABS-SMOTE)
 
 This repository provides the reference Python implementation of the
