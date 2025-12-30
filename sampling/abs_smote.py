@@ -64,10 +64,8 @@ class AdaptiveBoundaryShiftSMOTE:
         if self.random_state is not None:
             np.random.seed(self.random_state)
 
-        # 将输入转换为numpy数组
         X, y = np.array(X), np.array(y)
 
-        # 找出少数类和多数类
         class_counts = Counter(y)
         minority_class = min(class_counts, key=class_counts.get)
         majority_class = max(class_counts, key=class_counts.get)
@@ -88,11 +86,11 @@ class AdaptiveBoundaryShiftSMOTE:
         if num_to_generate <= 0:
             return X.copy(), y.copy()
 
-        # 为少数类样本找到最近邻(在少数类内部)
+        
         nn_min = NearestNeighbors(n_neighbors=self.k + 1).fit(X_min)
         min_indices = nn_min.kneighbors(X_min, return_distance=False)[:, 1:]
 
-        # 为每个少数类样本找到最近的多数类邻居
+
         nn_maj = NearestNeighbors(n_neighbors=1).fit(X_maj)
         maj_distances, maj_indices = nn_maj.kneighbors(X_min)
         maj_distances = maj_distances.flatten()
@@ -109,18 +107,13 @@ class AdaptiveBoundaryShiftSMOTE:
         norms[norms == 0] = 1.0  # 避免除以零
         safe_directions = safe_directions / norms
 
-        # 生成合成样本
+
         synthetic_samples = []
         synthetic_labels = []
 
         for _ in range(num_to_generate):
-            # 随机选择一个少数类实例
             idx = np.random.randint(0, len(X_min))
-
-            # 获取其邻居的索引
             nn_indices = min_indices[idx]
-
-            # 随机选择其中一个邻居
             neighbor_idx = np.random.choice(nn_indices)
 
             # 获取原始样本及其邻居
