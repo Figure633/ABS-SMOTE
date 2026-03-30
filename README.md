@@ -1,7 +1,7 @@
 # 自适应边界偏移 SMOTE（ABS-SMOTE）
 
 本仓库给出了本科毕业论文:针对不平衡分类任务的过采样算法研究中所提出的
-**自适应边界偏移 SMOTE（Adaptive Boundary-Shift SMOTE，ABS-SMOTE）**
+**自适应边界偏移 SMOTE（Adaptive Boundary-Shift Synthetic Majority Oversampling Technique，ABS-SMOTE）**
 算法的 Python 参考实现。
 
 ABS-SMOTE 是一种面向不平衡分类问题的过采样方法。
